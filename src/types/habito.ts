@@ -1,2 +1,14 @@
-// TODO(Aula 2 — Ex. 4 a 7): crie `src/types/habito.ts` com `Habito`, `StatusHabito`,
-// `CategoriaHabito` e os utility types derivados (Pick/Omit/Partial).
+export type CategoriaHabito = 'saude' | 'fitness' | 'mente' | 'rotina';
+
+export type StatusHabito = 'pendente' | 'concluido';
+
+export type Habito = {
+    id: string;
+    titulo: string;
+    categoria: CategoriaHabito;
+    status: StatusHabito;
+    fotoUri?: string;
+};
+
+// O identificador é gerado pelo app, então não faz parte dos dados de criação.
+export type NovoHabito = Omit<Habito, 'id'>;

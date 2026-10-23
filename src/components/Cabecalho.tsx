@@ -1,19 +1,25 @@
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
-// TODO(Aula 2 — Ex. 3): este componente tem erros propositais de View/Text/StyleSheet
-// para você corrigir — ver exercises.md da Aula 2.
-export default function Cabecalho() {
+import { View, Text, StyleSheet } from 'react-native';
+
+type CabecalhoProps = {
+    total: number;
+    concluidos: number;
+};
+
+export default function Cabecalho({ total, concluidos }: CabecalhoProps) {
+    // A lista controla a rolagem; o cabeçalho não precisa de uma rolagem própria.
     return (
-        <ScrollView style={styles.container}>
-            <Text>Hábitos de hoje</Text>
-            <View>
-                <Text style={styles.linha}>Total: 5</Text>
-                <Text style={styles.linha}>Concluídos: 2</Text>
+        <View style={styles.container}>
+            <Text style={styles.titulo}>Hábitos de hoje</Text>
+            <View style={styles.linha}>
+                <Text>Total: {total}</Text>
+                <Text>Concluídos: {concluidos}</Text>
             </View>
-        </ScrollView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: { padding: 16 },
-    linha: { justifyContent: 'space-between' },
+    titulo: { color: '#f26522', fontSize: 24, fontWeight: 'bold', marginBottom: 12 },
+    linha: { flexDirection: 'row', justifyContent: 'space-between' },
 });

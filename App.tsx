@@ -7,7 +7,8 @@ export default function App() {
     <View style={styles.container}>
       <Text>Rastreador de Micro-hábitos e Condicionamento Físico</Text>
       <StatusBar style="auto" />
-      <Cabecalho />
+      {/* Mantém os valores demonstrativos até a tela de hábitos ser conectada. */}
+      <Cabecalho total={5} concluidos={2} />
     </View>
   );
 }
