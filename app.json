@@ -3,6 +3,7 @@
     "name": "habit-tracker-expo",
     "slug": "habit-tracker-expo",
     "version": "1.0.0",
+    "scheme": "habittracker",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-status-bar",
+      "expo-router",
+      "expo-image"
+    ]
   }
 }
