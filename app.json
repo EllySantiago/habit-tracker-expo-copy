@@ -25,7 +25,15 @@
     "plugins": [
       "expo-status-bar",
       "expo-router",
-      "expo-image"
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O app usa suas fotos para registrar o progresso dos seus hábitos.",
+          "cameraPermission": "O app usa a câmera para você fotografar o seu hábito.",
+          "microphonePermission": false
+        }
+      ]
     ]
   }
 }

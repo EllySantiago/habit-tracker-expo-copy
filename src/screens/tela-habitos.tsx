@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { Link, useRouter } from 'expo-router';
+import { FlatList, Pressable, StyleSheet, Text } from 'react-native';
 import Cabecalho from '../components/Cabecalho';
 import { CardHabito } from '../components/Cardhabito';
 import type { Habito } from '../types/habito';
@@ -14,6 +15,7 @@ const habitosIniciais: Habito[] = [
 ];
 
 export default function TelaHabitos() {
+    const router = useRouter();
     const [habitos, setHabitos] = useState(habitosIniciais);
     const concluidos = habitos.filter((habito) => habito.status === 'concluido').length;
 
@@ -38,6 +40,17 @@ export default function TelaHabitos() {
             ListHeaderComponent={
                 <Cabecalho total={habitos.length} concluidos={concluidos} />
             }
+            ListFooterComponent={
+                <>
+                    {/* Link: navegação declarativa, simples, para um destino fixo. */}
+                    <Link href="/registrar-foto" style={styles.link}>Registrar foto</Link>
+                    <Link href="/galeria" style={styles.link}>Galeria de progresso</Link>
+                    {/* router.push: navegação imperativa, útil quando a ação vem de um evento (botão). */}
+                    <Pressable onPress={() => router.push('/sobre')}>
+                        <Text style={styles.link}>Sobre o app</Text>
+                    </Pressable>
+                </>
+            }
             renderItem={({ item }) => (
                 <CardHabito
                     titulo={item.titulo}
@@ -56,4 +69,5 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         padding: 16,
     },
+    link: { color: '#f26522', fontSize: 16, fontWeight: '700', paddingVertical: 8 },
 });
